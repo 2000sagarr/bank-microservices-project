@@ -2,12 +2,32 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    active: git
+#    active: native
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
   cloud:
     config:
       server:
-        native:
-          search-locations: "classpath:/config"
+        git:
+          uri: "https://github.com/eazybytes/eazybytes-config.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+#        native:
+#          search-locations: "classpath:/config"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+encrypt:
+  key: "45D81EC1EF61DF9AD8D3E5BB785247"
 
 server:
   port: 8071

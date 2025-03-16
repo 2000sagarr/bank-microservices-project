@@ -7,6 +7,11 @@ spring:
     active: "qa"
   config:
     import: "optional:configserver:http://localhost:8071/"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
 #  config:
 #    import:
 #      - "application_qa.yml.txt"
@@ -27,6 +32,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 #loans:
 #  message: "Welcome to Bank loans related local APIs"
 #  contactDetails:
