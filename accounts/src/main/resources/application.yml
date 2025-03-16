@@ -1,6 +1,13 @@
 server:
   port: 8080
 spring:
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+  profiles:
+    active:
+      - "qa"
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
@@ -15,3 +22,15 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to Bank Account related local APIs"
+  contactDetails:
+    name: "Sagar Mahajan"
+    email: "2000sagarr@gmail.com"
+  onCallSupport:
+    - 1234567889
+    - 4352617273

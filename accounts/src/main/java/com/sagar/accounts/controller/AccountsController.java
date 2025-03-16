@@ -1,6 +1,7 @@
 package com.sagar.accounts.controller;
 
 import com.sagar.accounts.constants.AccountsConstants;
+import com.sagar.accounts.dto.AccountsContactInfoDto;
 import com.sagar.accounts.dto.CustomerDto;
 import com.sagar.accounts.dto.ErrorResponseDto;
 import com.sagar.accounts.dto.ResponseDto;
@@ -14,6 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,9 @@ import org.springframework.web.bind.annotation.*;
 public class AccountsController {
 
     private IAccountService iAccountService;
+
+    @Autowired
+    private AccountsContactInfoDto accountContactInfoDto;
 
     @Operation(
             summary = "Create Account REST Api",
@@ -145,6 +150,31 @@ public class AccountsController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @Operation(
+            summary = "Fetch Contact Info",
+            description = "REST API to fetch Customer &  Account details based on a mobile number"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    }
+    )
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContactInfoDto> getContactInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(accountContactInfoDto);
     }
 
 }
