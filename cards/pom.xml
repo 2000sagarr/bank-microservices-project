@@ -96,7 +96,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>2000sagarr/${project.artifactId}:v1</name>
+						<name>2000sagarr/${project.artifactId}:v2</name>
 					</image>
 				</configuration>
 			</plugin>
@@ -120,7 +120,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>2000sagarr/${project.artifactId}:v1</image>
+						<image>2000sagarr/${project.artifactId}:v2</image>
 					</to>
 				</configuration>
 			</plugin>
