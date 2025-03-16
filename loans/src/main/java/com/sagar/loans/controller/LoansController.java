@@ -2,6 +2,7 @@ package com.sagar.loans.controller;
 
 import com.sagar.loans.constants.LoansConstants;
 import com.sagar.loans.dto.ErrorResponseDto;
+import com.sagar.loans.dto.LoansContactInfoDto;
 import com.sagar.loans.dto.LoansDto;
 import com.sagar.loans.dto.ResponseDto;
 import com.sagar.loans.service.ILoansService;
@@ -14,6 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,10 @@ import org.springframework.web.bind.annotation.*;
 public class LoansController {
 
     private ILoansService iLoansService;
+
+    @Autowired
+    private LoansContactInfoDto loansContactInfoDto;
+
 
     @Operation(
             summary = "Create Loan REST API",
@@ -159,6 +165,32 @@ public class LoansController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_DELETE));
         }
+    }
+
+
+    @Operation(
+            summary = "Fetch Contact Info",
+            description = "REST API to fetch Customer &  Loans details based on a mobile number"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    }
+    )
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfoDto> getContactInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(loansContactInfoDto);
     }
 
 }

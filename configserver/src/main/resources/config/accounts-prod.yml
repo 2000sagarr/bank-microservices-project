@@ -1,0 +1,11 @@
+build:
+  version: "1.2"
+
+accounts:
+  message: "Welcome to Bank Account related Prod APIs"
+  contactDetails:
+    name: "Sagar Mahajan-Prod"
+    email: "2000sagarr@gmail.com"
+  onCallSupport:
+    - 1234567889
+    - 4352617273

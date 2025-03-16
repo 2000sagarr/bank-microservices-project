@@ -1,11 +1,11 @@
-package com.sagar.accounts.dto;
+package com.sagar.cards.dto;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;
 import java.util.Map;
 
-@ConfigurationProperties(prefix = "accounts")
-public record AccountsContactInfoDto(String message, Map<String, String> contactDetails, List<String> onCallSupport) {
+@ConfigurationProperties(prefix = "cards")
+public record CardsContactInfoDto(String message, Map<String, String> contactDetails, List<String> onCallSupport) {
 
 }

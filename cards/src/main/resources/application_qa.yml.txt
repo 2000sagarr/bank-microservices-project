@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "1.2"
+
+cards:
+  message: "Welcome to cards Account related QA APIs"
+  contactDetails:
+    name: "Sagar Mahajan-QA"
+    email: "2000sagarr@gmail.com"
+  onCallSupport:
+    - 1234567889
+    - 4352617273

@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "1.2"
+
+loans:
+  message: "Welcome to loans Account related qa APIs"
+  contactDetails:
+    name: "Sagar Mahajan-qa"
+    email: "2000sagarr@gmail.com"
+  onCallSupport:
+    - 1234567889
+    - 4352617273
+    - 4352617273
