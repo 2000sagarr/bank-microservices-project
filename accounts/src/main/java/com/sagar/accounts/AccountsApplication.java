@@ -24,7 +24,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 				contact = @Contact(
 						name="Sagar Mahajan",
 						email = "2000sagarr@gmail.com",
-						url = "Test.com"
+						url = "sagarmahajan.com"
 				)
 		),
 		externalDocs = @ExternalDocumentation(
