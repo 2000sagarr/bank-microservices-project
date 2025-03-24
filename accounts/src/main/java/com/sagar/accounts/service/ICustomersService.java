@@ -3,5 +3,5 @@ import com.sagar.accounts.dto.CustomerDetailsDto;
 
 public interface ICustomersService {
 
-    CustomerDetailsDto fetchCustomerDetails(String mobileNumber);
+    CustomerDetailsDto fetchCustomerDetails(String mobileNumber, String correaltionId);
 }
