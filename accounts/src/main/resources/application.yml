@@ -20,6 +20,10 @@ spring:
       hibernate:
         ddl-auto: update
       show-sql: true
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 #  rabbitmq:
 #    host: "localhost"
 #    port: 5672
@@ -93,3 +97,11 @@ logging:
     com:
       sagar:
         accounts: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenStatus: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
